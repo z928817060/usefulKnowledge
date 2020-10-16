@@ -1,0 +1,11 @@
+问题1:RandomAccessFile的中文乱码问题:
+        1)读取完后转码
+        直接raf.readLine()中文乱码
+        stationInfo = new String(raf.readLine().getBytes("ISO-8859-1"),"utf-8");
+        2)使用二进制按照字节读取
+
+问题2:RandomAccessFile的写入机制是:从某个位置写入,该位置之后的内容被清空,再被写入;所以插入写入需要采取策略:
+      目前没有找到直接插入写入的办法,采取的策略是:插入部分之后的缓存----继续写入----再将缓存的部分再写入  见RandomAccessFileWrite
+
+问题3:本身写入的byte[]就是二进制了,还有封装好的一些writeInt()等写入的都是二进制;特别注意的是,写入使用了 writefloat(),读取对应要用readfloat(),切记要对应 ,然后再调节大小端;
+        本地写的时候,默认是机器的大小端,手动选择写入的小端,使用float2byte()

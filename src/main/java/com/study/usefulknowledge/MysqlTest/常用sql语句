@@ -1,0 +1,56 @@
+mysql文档:
+
+1.利用sqlyog,建立数据库和表,里面的要素设定名称和类型,类型一般是varchar,其中时间类型的要么是年月日,要么是时分秒
+2.链接操作,执行sql语句,关闭,见DBUtil,或者使用DBMysqlUtil
+    增删改查,使用相应的sql语句,执行即可(见GoddessDao)
+
+    注意:1.连接时需要mysql-connector-java驱动包;
+         2.批量查询:可使用DBMysqlUtil的转化成list的工具
+         3.改 删 都需要先查
+         4.模糊查询比较影响效率,但是 LIKE '13026%' 比LIKE '%13026%'效率高很多
+
+
+常用sql语句:
+    增:insert into goddess(name,mobie,email,address) values(?,?,?,?)
+    删:delete from goddess where id>10 and id <100
+    改:update goddess set name=?,mobie=?,email=?,address=? where id=?
+    查询:
+        ~模糊查询:
+        ZD_STATION表名   station_code要素    模糊查询的内容%13026%
+        SELECT * FROM ZD_STATION WHERE station_code LIKE '%13026%'
+        ~范围查询:
+        tableName表名   分数要素  :查询分数大于90小于100
+        select * from tableName where 分数 >90 and 分数 <100
+        ~查询内容的不同:
+        查找tableName1中的station_code1和table2中的code不同
+        select distinct station_code1 from tableName1 where station_code1 not in (select distinct stationcode2 from tableName2 )
+        查询记录个数：  COUNT(*)函数
+        SELECT COUNT(*) FROM table_name
+        查询某个记录：
+            查前面两条记录：         select * from test_limit limit 0,2;
+            查第二和第三条记录:     select * from test_limit limit 1,2;
+            查最后一条记录：          select * from test_limit order by id DESC limit 1;
+            说明：关于limit关键字，它有两个参数，即：limit arg1,arg2；arg1表示记录的下标，arg2表示返回记录条数，当arg1不写的时候，默认是0。
+
+    设置自增的id从1开始:ALTER TABLE AIRPORT_STANDARD_DOWN_PRO AUTO_INCREMENT=1
+
+建表:
+    引擎:MyISAM
+    字符集:utf8
+    核对:utf8_general_ci
+    当然,条数据的类型也可以设置编码,在设置每个数据的地方(隐藏语言选项)
+    id: int 主键,非空,自增
+    其他字符串:varchar
+
+    建立索引:
+        表会自己建立一个索引,但是根据需求可能需要修改
+        设置主键:假如经常按照站名station和时间time查找数据,就可以设置station和time为主键
+        在个人索引里设置,名字,选择两个要素,选择类型(hash方式相对占空间一些)
+删除表:
+    DROP TABLE test
+
+导入导出:
+    导出:导出为csv(为了方便导入)
+    导入:导入使用本地加载的csv数据
+
+解释优化:   使用explain执行sql语句,进行目的性的优化

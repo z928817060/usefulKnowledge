@@ -1,0 +1,26 @@
+步骤：
+    将项目打包
+    发布到linux，在linux下执行
+
+注意:通过ssh连接服务器1,再连接服务器2: 服务器安装sshpass插件
+    List<String> s = SFTPUtil.exec(session, "sshpass -p app82193302 ssh app@192.6.1.113 ps -ef|grep " + programName);
+
+ssh的监控个例:
+详情参考:XHMonitor的impl
+    消息平台:
+     * 方案一:虚拟机器上的队列列表+具体消息:  /broker/virtual-hosts/{host}.json  + 	/broker/virtual-hosts/{host}/queues/{dest}.json
+     * 方案二:直接的队列加部分信息:http://123.59.100.107:61680/broker/virtual-hosts/{host}/queues.json
+     *      eg.http://123.59.100.107:61680/broker/virtual-hosts/xinhong_mq/queues.json
+    mysql:
+     * 命令:mysqladmin -uapp -papp82193302 status
+    redis:
+     * 命令:redis-cli -p 6390 info
+    服务器:
+     * 命令:vmstat   ; df -h  ;  ps -o nlwp,pid,lwp,args -u app|sort -n  ;
+
+    启动关闭服务:
+     * 直接命令行或者写成sh脚本
+    注意:获取服务器的cpu命令发生失效的概率很大;
+
+ssh的环境变量传递问题:
+     通过ssh连接执行命令:使用的环境变量为自身的(环境变量默认传递),过程

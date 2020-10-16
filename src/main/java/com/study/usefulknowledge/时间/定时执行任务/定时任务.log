@@ -1,0 +1,7 @@
+定时任务:
+1.Thread.sleep自己写的,麻烦
+2.Timer                         (见GFSTimeManger)
+3.ScheduledExecutorService      (多线程可用,见GFSTimeManger)
+4.quartz                        (使用多,应对复杂的时间要求,但是调用麻烦 ,见)
+                                spring项目中去掉quartz日志办法,https://blog.csdn.net/shoulder_csdn/article/details/79011103
+                                线程池的设置:https://yq.aliyun.com/ziliao/340127

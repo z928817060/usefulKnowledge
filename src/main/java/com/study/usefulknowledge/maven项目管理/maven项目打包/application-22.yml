@@ -1,0 +1,48 @@
+local:
+  #本地的redis业务目录
+  proad: /home/redis/xhms-cluster/
+#  proad: E:/dataTest/aof/local/
+  #本地redis增长、压缩目录
+  nroad: /xinhong/meteo_data/xhms-cluster-increased/
+#  nroad: E:/dataTest/aof/save/
+  node:
+    - nodes-6379
+    - nodes-6380
+    - nodes-6381
+    - nodes-6382
+  length:
+    - 0
+    - 0
+    - 0
+    - 0
+#    第一次往往是大文件，很慢，第一次是否处理
+  work: false
+
+remote:
+#  ip: 58.213.127.51
+  ip: 192.6.1.30
+  road: /home/app/test/
+  user: app
+  password: app82193302
+  downloadRate: 4000     #8000/8 k下载速度
+
+
+apollo:
+  apollo_user:  app
+  apollo_password: app82193302
+  apollo_host: 192.6.1.23
+#  apollo_host: 58.213.127.51
+  apollo_port: 61613
+  apollo_destination: /queue/redis.aof.rewrite
+
+#spring:
+#  application:
+#    name: east
+#  datasource:
+#    name: 25
+#    url: jdbc:mysql://192.6.1.25:3306/yc?Unicode=true&characterEncoding=UTF-8
+#    username: root
+#    password: 123456
+#    driver-class-name: com.mysql.jdbc.Driver
+#  thymeleaf:
+#    cache: false

@@ -1,0 +1,9 @@
+说明:
+    接口一般放在controller里,使用方式:get,post;
+        get一般请求参数不需要保密,post方式请求参数要隐秘一些;
+
+    一般内容:code:一些错误代码,可以自己定义,见ResStatus.java
+             delay:查询延迟
+             data:内容
+    个例:GFSDataController的GFSCache()
+         LoggInfoController的getLogInfo()

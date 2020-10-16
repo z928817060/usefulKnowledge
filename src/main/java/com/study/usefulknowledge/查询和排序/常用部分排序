@@ -1,0 +1,8 @@
+常用部分排序:
+
+使用: list----Collections.sort()
+
+使用: 数组----Arrays.sort()
+
+定制排序规则: 实现Comparator<T>接口,重写compare方法,见sortByHeightAndWeight
+              或者使用Collections.sort(list , new Comparator<T>{...重写compare})

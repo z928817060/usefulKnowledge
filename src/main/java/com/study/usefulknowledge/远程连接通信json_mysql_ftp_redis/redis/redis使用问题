@@ -1,0 +1,6 @@
+
+redis的连接:connRedis
+        关闭:closeJedisConn
+
+    注意: 1.封装的各种方法里,都会有returnJedis(),关闭,表示使用一次该方法关闭一次,可以根据需求去掉
+          2.对于hash的(key+field) 批量查询field可以使用  hgetall() hkeys()作为批量处理,提高效率

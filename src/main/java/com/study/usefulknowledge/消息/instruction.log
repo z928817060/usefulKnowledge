@@ -1,0 +1,12 @@
+
+1包的使用
+不同的包发，要不同的包接，主要是tcp和topic开头的区别。
+注意：python使用stomp包发送的消息，没有规定消息内容的格式，只能使用stomp相应的包解
+
+2自己搭了一个接收端  Listeners
+针对不同ip访问，有socket连接超时问题，搭建一个接收端（次数和闲置时间）
+逻辑：定时查询连接状态，次数和闲置时间判别，是否重连（采用该逻辑：apollo的jar本身抛出异常无法捕捉）
+使用：Listeners，定时器定时执行dojob（），业务逻辑位置：run()的while里
+
+3队列：BlockingQueueTest
+

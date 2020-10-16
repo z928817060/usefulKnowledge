@@ -1,0 +1,27 @@
+maven项目打包：
+    常用配置：
+        1、父类：<parent>
+        2、组：<groupId>wingsby</groupId>
+           名：<artifactId>hdfs-test</artifactId>
+           版本：<version>1.0-SNAPSHOT</version>
+		   打包方式：<packaging>jar或者war或者别的
+		   
+        3、依赖包：<dependencies>换成自己的
+		
+		4、打包：<build>
+				打包名：<finalName>
+				资源配置（首选）：<resources>            --也可以防在<plugin>中配置（但是未调试）
+				各种插件：<plugins>
+						jar启动类配置（需要手动配）：<artifactId>maven-jar-plugin</artifactId>
+						编译器版本：<artifactId>maven-compiler-plugin</artifactId>
+						把依赖打包出来，防止包过大（默认打包到项目里）：<artifactId>maven-dependency-plugin</artifactId>
+						次选：解决资源文件的目录、编码问题（默认打包到项目里）：<artifactId>maven-resources-plugin</artifactId>
+		5、选择配置文件：多个配置文件声明id：<profiles>
+        6、打包工具：
+            1）选择激活的配置文件maven project--profiles打钩
+            2）yml打包时，可以选择，但是没有目录来的更直观
+                    默认加载：application.yml   spring:profiles:active: 22
+                    导向具体yml，默认以-隔开：application-22.yml
+            3）maven project--Lifecycle--clean+compile+package
+			注意：打包前，可以设置跳过test（一个闪电标识）
+			        有的需要别的包的安装，比如commen包，先打包，然后install，再去打别的包

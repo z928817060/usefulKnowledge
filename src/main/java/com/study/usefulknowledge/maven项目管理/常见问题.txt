@@ -1,0 +1,17 @@
+
+	一、安装、新建：可以查看网页
+
+	二、导入
+		可以重新打开，然后import整个项目目录；也可以点击新建--选择源--找到项目中的pom
+
+常见问题：maven库的路径等要设置好，环境的三个路径要设置好，settings.xml和其下面两个
+	  1、有个别标红的依赖，可以自动或者手动下载
+	
+	  2、大量标红的依赖，可以自动下载；但是遇到自动下载不成功的情况，可能是maven没识别出不同，因此不会更新。
+		一般的刷新办法（或者的关系）：1）重新打开项目  2）重新import或者 3）注释掉一部分依赖再自动下载，实验成功。
+
+	  3、此时还不成功，要检查settings.xml的mirror是否能够访问
+
+	  4、遇到dependences爆红，且含有如下提示：
+	  Element ‘dependencies’ cannot have character [children], because the type’s content type is element-only
+	  则是赋值的依赖中含有特殊字符而且idea看不到，可以一个一个依赖考、或者把要考的依赖复制到txt中删除特殊字符。

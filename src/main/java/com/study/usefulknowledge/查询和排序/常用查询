@@ -1,0 +1,12 @@
+查询：
+
+针对list：
+    方式一、根据下标获取内容：list.get(i)
+    方式二、根据值取：String str = Collections.max(list);  （或者Collections.min(list);）
+                int index = list.indexOf(str);
+
+针对数组[]：
+    方式一、直接通过下标获取内容a[2]
+    方式二、根据值获取位置：
+            int a[] = new int[] { 18, 62, 68, 82, 65, 9 };
+                    int temp = Arrays.binarySearch(a, 2);
